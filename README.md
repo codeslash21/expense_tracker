@@ -26,4 +26,4 @@ This is a flutter app. You can use this as a simple expense tracker app. You can
 
 ### Demo Video
 
-<img src="./assets/demo.mp4" width="300" height="550"/>
+[![Demo Video](./assets/demo.png)](./assets/demo.mp4)
