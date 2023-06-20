@@ -12,7 +12,7 @@ const categoryIcons = {
   Category.work: Icons.wallet_travel
 };
 
-final uuid = Uuid();
+const uuid = Uuid();
 final formatter = DateFormat.yMd();
 
 class Expense {

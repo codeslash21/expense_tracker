@@ -5,7 +5,7 @@ import 'package:expense_tracker/model/expense_bucket.dart';
 
 class Chart extends StatelessWidget {
   final List<Expense> allExpenses;
-  Chart({super.key, required this.allExpenses});
+  const Chart({super.key, required this.allExpenses});
 
   List<ExpenseBucket> get bucketList {
     return [
@@ -28,33 +28,37 @@ class Chart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 16, horizontal: 8),
+      padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
       height: 180,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8),
-        gradient: const LinearGradient(
+      decoration: const BoxDecoration(
+        borderRadius: BorderRadius.only(
+            bottomLeft: Radius.circular(8), bottomRight: Radius.circular(8)),
+        gradient: LinearGradient(
           colors: [
-            Color.fromARGB(255, 219, 154, 234),
-            Color.fromARGB(255, 209, 120, 233)
+            Color.fromARGB(255, 237, 194, 255),
+            Color.fromARGB(255, 223, 160, 255)
           ],
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
         ),
       ),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          Expanded(
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                for (final bucket in bucketList) // alternative to map()
-                  ChartBar(
-                    expenseBucket: bucket,
-                    totalExpenses: totalExpenses,
-                  )
-              ],
-            ),
-          ),
+          allExpenses.length == 0
+              ? Container()
+              : Expanded(
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      for (final bucket in bucketList) // alternative to map()
+                        ChartBar(
+                          expenseBucket: bucket,
+                          totalExpenses: totalExpenses,
+                        )
+                    ],
+                  ),
+                ),
           const SizedBox(height: 12),
           Row(
             children: bucketList // for ... in
@@ -64,7 +68,7 @@ class Chart extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(horizontal: 4),
                       child: Icon(
                         categoryIcons[bucket.category],
-                        color: Color.fromARGB(255, 209, 76, 226),
+                        color: const Color.fromARGB(255, 209, 76, 226),
                       ),
                     ),
                   ),

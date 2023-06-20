@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class ExpenseItem extends StatelessWidget {
   final Expense expense;
-  ExpenseItem({super.key, required this.expense});
+  const ExpenseItem({super.key, required this.expense});
 
   @override
   Widget build(BuildContext context) {
